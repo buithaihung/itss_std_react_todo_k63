@@ -19,13 +19,7 @@ import useStorage from "../hooks/storage";
 import { getKey } from "../lib/util";
 
 function Todo() {
-  const [items, putItems] = React.useState([
-    /* テストコード 開始 */
-    { key: getKey(), text: "日本語の宿題", done: false },
-    { key: getKey(), text: "reactを勉強する", done: false },
-    { key: getKey(), text: "明日の準備をする", done: false },
-    /* テストコード 終了 */
-  ]);
+  const [items, putItems, clearItems] = useStorage();
   const [filter,setFilter] = useState('ALL');
   const displayItems = items.filter(item => {
     if (filter === 'ALL') return true;
@@ -57,6 +51,11 @@ function Todo() {
         onChange={handleFilterChange}
         value={filter}
       />
+      <div className="panel-block">
+        <button style={{color: "red",backgroundColor: "white",opacity:0.5}} onClick={clearItems}>
+          すべてを削除する
+        </button>
+      </div>
     </div>
   );
 }
