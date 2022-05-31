@@ -26,7 +26,15 @@ function Todo() {
     { key: getKey(), text: "明日の準備をする", done: false },
     /* テストコード 終了 */
   ]);
-
+  const handleCheck = (checked) => {
+    const newItems = items.map((item) => {
+      if (item.key === checked.key) {
+        item.done = !item.done;
+      }
+      return item;
+    });
+    putItems(newItems);
+  };
   const handleAdd = (text) => {
     putItems([...items, { key: getKey(), text, done: false }]);
   };
@@ -34,7 +42,7 @@ function Todo() {
     <div className="panel">
       <div className="panel-heading">ITSS ToDoアプリ</div>
       {items.map((item) => (
-        <TodoItem key={item.key} item={item} />
+        <TodoItem key={item.key} item={item} onCheck={handleCheck} />
       ))}
       <div className="panel-block">{items.length} items</div>
       <Input onAdd={handleAdd} />
