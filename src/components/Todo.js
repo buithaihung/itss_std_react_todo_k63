@@ -52,6 +52,11 @@ function Todo() {
           onCheck={handleCheck}
         />
       ))}
+      <div className="panel-block">{items.length} items</div>
+      <Filter
+        onChange={handleFilterChange}
+        value={filter}
+      />
       <div className="panel-block">
         {displayItems.length} items
       </div>
