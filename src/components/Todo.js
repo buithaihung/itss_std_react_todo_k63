@@ -53,13 +53,6 @@ function Todo() {
         />
       ))}
       <div className="panel-block">{items.length} items</div>
-      <Filter
-        onChange={handleFilterChange}
-        value={filter}
-      />
-      <div className="panel-block">
-        {displayItems.length} items
-      </div>
       <div className="panel-block">
         <button className="button is-light is-fullwidth" onClick={clearItems}>
           全てのToDoを削除
